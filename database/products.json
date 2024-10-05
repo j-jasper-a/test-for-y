@@ -1,0 +1,152 @@
+[
+  {
+    "id": "1",
+    "name": "Product name",
+    "creator": "Creator name",
+    "category": "avatars",
+    "subcategory": "human_like",
+    "platforms": ["vrchat_pcvr", "spatial"],
+    "price": 20,
+    "ratings": 5
+  },
+  {
+    "id": "2",
+    "name": "Product name",
+    "creator": "Creator name",
+    "category": "avatars",
+    "subcategory": "robot_cyborgs",
+    "platforms": ["vrchat_quest", "spatial"],
+    "price": 18,
+    "ratings": 5
+  },
+  {
+    "id": "3",
+    "name": "Product name",
+    "creator": "Creator name",
+    "category": "avatars",
+    "subcategory": "anthro_furry",
+    "platforms": ["chilloutvr", "vrchat_pcvr"],
+    "price": 25,
+    "ratings": 5
+  },
+  {
+    "id": "4",
+    "name": "Product name",
+    "creator": "Creator name",
+    "category": "avatars",
+    "subcategory": "others",
+    "platforms": ["virtual_cast", "neos_vr"],
+    "price": 15,
+    "ratings": 5
+  },
+  {
+    "id": "5",
+    "name": "Product name",
+    "creator": "Creator name",
+    "category": "avatars",
+    "subcategory": "human_like",
+    "platforms": ["vrchat_pcvr", "resonite"],
+    "price": 22,
+    "ratings": 5
+  },
+  {
+    "id": "6",
+    "name": "Product name",
+    "creator": "Creator name",
+    "category": "avatars",
+    "subcategory": "robot_cyborgs",
+    "platforms": ["vrchat_quest", "chilloutvr"],
+    "price": 19,
+    "ratings": 5
+  },
+  {
+    "id": "7",
+    "name": "Product name",
+    "creator": "Creator name",
+    "category": "fashion",
+    "subcategory": "clothes",
+    "platforms": ["vrchat_quest", "chilloutvr"],
+    "price": 22,
+    "ratings": 5
+  },
+  {
+    "id": "8",
+    "name": "Product name",
+    "creator": "Creator name",
+    "category": "fashion",
+    "subcategory": "accessories",
+    "platforms": ["vrchat_pcvr", "resonite"],
+    "price": 17,
+    "ratings": 5
+  },
+  {
+    "id": "9",
+    "name": "Product name",
+    "creator": "Creator name",
+    "category": "fashion",
+    "subcategory": "others",
+    "platforms": ["vrchat_quest", "virtual_cast"],
+    "price": 24,
+    "ratings": 5
+  },
+  {
+    "id": "10",
+    "name": "Product name",
+    "creator": "Creator name",
+    "category": "fashion",
+    "subcategory": "clothes",
+    "platforms": ["spatial", "neos_vr"],
+    "price": 20,
+    "ratings": 5
+  },
+  {
+    "id": "11",
+    "name": "Product name",
+    "creator": "Creator name",
+    "category": "fashion",
+    "subcategory": "accessories",
+    "platforms": ["cluster", "vrchat_pcvr"],
+    "price": 23,
+    "ratings": 5
+  },
+  {
+    "id": "12",
+    "name": "Product name",
+    "creator": "Creator name",
+    "category": "fashion",
+    "subcategory": "others",
+    "platforms": ["vrchat_pcvr", "neos_vr"],
+    "price": 16,
+    "ratings": 5
+  },
+  {
+    "id": "13",
+    "name": "Product name",
+    "creator": "Creator name",
+    "category": "avatars",
+    "subcategory": "human_like",
+    "platforms": ["virtual_cast", "spatial"],
+    "price": 21,
+    "ratings": 5
+  },
+  {
+    "id": "14",
+    "name": "Product name",
+    "creator": "Creator name",
+    "category": "avatars",
+    "subcategory": "others",
+    "platforms": ["vrchat_quest", "resonite"],
+    "price": 15,
+    "ratings": 5
+  },
+  {
+    "id": "15",
+    "name": "Product name",
+    "creator": "Creator name",
+    "category": "fashion",
+    "subcategory": "clothes",
+    "platforms": ["vrchat_pcvr", "spatial"],
+    "price": 19,
+    "ratings": 5
+  }
+]

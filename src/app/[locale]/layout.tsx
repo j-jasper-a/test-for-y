@@ -11,8 +11,8 @@ const fontMain = FontMain({
 });
 
 export const metadata: Metadata = {
-  title: "Avatown | The Marketplace",
-  description: "Avatown is a marketplace for VR avatars.",
+  title: "TestTown | The Marketplace",
+  description: "TestTown is a marketplace for VR avatars.",
 };
 
 export default async function RootLayout({
