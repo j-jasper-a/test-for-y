@@ -3,5 +3,20 @@
     "home": {
       "title": "ホーム"
     }
+  },
+  "persistent": {
+    "topNavigationBar": {
+      "labels": {
+        "search": "キーワード",
+        "category": "カテゴリー"
+      },
+      "placeholders": {
+        "search": "Avatownを検索",
+        "all": "すべて"
+      },
+      "links": {
+        "listYourCreation": "あなたの作品をリストアップする"
+      }
+    }
   }
 }

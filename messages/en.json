@@ -3,5 +3,20 @@
     "home": {
       "title": "Home"
     }
+  },
+  "persistent": {
+    "topNavigationBar": {
+      "labels": {
+        "search": "Keyword",
+        "category": "Category"
+      },
+      "placeholders": {
+        "search": "Search Avatown",
+        "all": "All"
+      },
+      "links": {
+        "listYourCreation": "List your creation"
+      }
+    }
   }
 }
