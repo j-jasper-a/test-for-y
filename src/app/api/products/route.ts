@@ -1,29 +1,37 @@
-import products from "../../../../database/products.json";
-import { ProductType } from "@/schemas/product";
-import { NextResponse, NextRequest } from "next/server";
+import allProducts from "../../../../database/products.json";
+import { NextRequest, NextResponse } from "next/server";
+
+type SearchParamsType = {
+  category?: string;
+  subcategory?: string;
+  platform?: string;
+};
 
 export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
-  const filters: Partial<Record<keyof ProductType, string>> = {
-    category: searchParams.get("category") as ProductType["category"],
-    subcategory: searchParams.get("subcategory") as ProductType["subcategory"],
-    platform: searchParams.get("platform") as ProductType["platforms"][number],
-  };
+  const url = new URL(request.url);
+  const { searchParams } = url;
 
-  const filteredProducts = products.filter((product: ProductType) =>
-    Object.entries(filters).every(
-      ([key, value]) =>
-        !value ||
-        (key === "platform"
-          ? product.platforms.includes(value)
-          : product[key as keyof ProductType] === value),
-    ),
-  );
+  const { category, subcategory, platform } = Object.fromEntries(
+    searchParams,
+  ) as SearchParamsType;
 
-  if (filteredProducts.length === 0) {
-    return NextResponse.json(
-      { message: "No products found matching the specified criteria" },
-      { status: 404 },
+  let filteredProducts = allProducts;
+
+  if (category) {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.category === category,
+    );
+  }
+
+  if (subcategory) {
+    filteredProducts = filteredProducts.filter(
+      (product) => product.subcategory === subcategory,
+    );
+  }
+
+  if (platform) {
+    filteredProducts = filteredProducts.filter((product) =>
+      product.platform.includes(platform),
     );
   }
 

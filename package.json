@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.59.0",
     "next": "14.2.14",
     "next-intl": "^3.20.0",
     "react": "^18",
@@ -16,6 +17,7 @@
     "react-icons": "^5.3.0"
   },
   "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^5.59.1",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/node": "^20",
     "@types/react": "^18",

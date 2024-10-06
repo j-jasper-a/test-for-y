@@ -5,7 +5,7 @@
     "creator": "Creator name",
     "category": "avatars",
     "subcategory": "human_like",
-    "platforms": ["vrchat_pcvr", "spatial"],
+    "platform": ["vrchat_pcvr", "spatial"],
     "price": 20,
     "ratings": 5
   },
@@ -15,7 +15,7 @@
     "creator": "Creator name",
     "category": "avatars",
     "subcategory": "robot_cyborgs",
-    "platforms": ["vrchat_quest", "spatial"],
+    "platform": ["vrchat_quest", "spatial"],
     "price": 18,
     "ratings": 5
   },
@@ -25,7 +25,7 @@
     "creator": "Creator name",
     "category": "avatars",
     "subcategory": "anthro_furry",
-    "platforms": ["chilloutvr", "vrchat_pcvr"],
+    "platform": ["chilloutvr", "vrchat_pcvr"],
     "price": 25,
     "ratings": 5
   },
@@ -35,7 +35,7 @@
     "creator": "Creator name",
     "category": "avatars",
     "subcategory": "others",
-    "platforms": ["virtual_cast", "neos_vr"],
+    "platform": ["virtual_cast", "neos_vr"],
     "price": 15,
     "ratings": 5
   },
@@ -45,7 +45,7 @@
     "creator": "Creator name",
     "category": "avatars",
     "subcategory": "human_like",
-    "platforms": ["vrchat_pcvr", "resonite"],
+    "platform": ["vrchat_pcvr", "resonite"],
     "price": 22,
     "ratings": 5
   },
@@ -55,7 +55,7 @@
     "creator": "Creator name",
     "category": "avatars",
     "subcategory": "robot_cyborgs",
-    "platforms": ["vrchat_quest", "chilloutvr"],
+    "platform": ["vrchat_quest", "chilloutvr"],
     "price": 19,
     "ratings": 5
   },
@@ -65,7 +65,7 @@
     "creator": "Creator name",
     "category": "fashion",
     "subcategory": "clothes",
-    "platforms": ["vrchat_quest", "chilloutvr"],
+    "platform": ["vrchat_quest", "chilloutvr"],
     "price": 22,
     "ratings": 5
   },
@@ -75,7 +75,7 @@
     "creator": "Creator name",
     "category": "fashion",
     "subcategory": "accessories",
-    "platforms": ["vrchat_pcvr", "resonite"],
+    "platform": ["vrchat_pcvr", "resonite"],
     "price": 17,
     "ratings": 5
   },
@@ -85,7 +85,7 @@
     "creator": "Creator name",
     "category": "fashion",
     "subcategory": "others",
-    "platforms": ["vrchat_quest", "virtual_cast"],
+    "platform": ["vrchat_quest", "virtual_cast"],
     "price": 24,
     "ratings": 5
   },
@@ -95,7 +95,7 @@
     "creator": "Creator name",
     "category": "fashion",
     "subcategory": "clothes",
-    "platforms": ["spatial", "neos_vr"],
+    "platform": ["spatial", "neos_vr"],
     "price": 20,
     "ratings": 5
   },
@@ -105,7 +105,7 @@
     "creator": "Creator name",
     "category": "fashion",
     "subcategory": "accessories",
-    "platforms": ["cluster", "vrchat_pcvr"],
+    "platform": ["cluster", "vrchat_pcvr"],
     "price": 23,
     "ratings": 5
   },
@@ -115,7 +115,7 @@
     "creator": "Creator name",
     "category": "fashion",
     "subcategory": "others",
-    "platforms": ["vrchat_pcvr", "neos_vr"],
+    "platform": ["vrchat_pcvr", "neos_vr"],
     "price": 16,
     "ratings": 5
   },
@@ -125,7 +125,7 @@
     "creator": "Creator name",
     "category": "avatars",
     "subcategory": "human_like",
-    "platforms": ["virtual_cast", "spatial"],
+    "platform": ["virtual_cast", "spatial"],
     "price": 21,
     "ratings": 5
   },
@@ -135,7 +135,7 @@
     "creator": "Creator name",
     "category": "avatars",
     "subcategory": "others",
-    "platforms": ["vrchat_quest", "resonite"],
+    "platform": ["vrchat_quest", "resonite"],
     "price": 15,
     "ratings": 5
   },
@@ -145,7 +145,7 @@
     "creator": "Creator name",
     "category": "fashion",
     "subcategory": "clothes",
-    "platforms": ["vrchat_pcvr", "spatial"],
+    "platform": ["vrchat_pcvr", "spatial"],
     "price": 19,
     "ratings": 5
   }

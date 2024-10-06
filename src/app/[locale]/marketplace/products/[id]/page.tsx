@@ -1,9 +1,10 @@
-type Props = {
+type PageProps = {
   params: {
     id: string;
   };
 };
 
-export default function ProductPage({ params }: Props) {
-  return <div>Product</div>;
+export default function ProductPage({ params }: PageProps) {
+  const { id } = params;
+  return <div>Product: {id}</div>;
 }

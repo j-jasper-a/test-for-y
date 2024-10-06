@@ -1,3 +1,4 @@
+import ProtectedRoute from "@/components/common/ProtectedRoute/ProtectedRoute";
 import TopNavigationBar from "@/components/persistent/TopNavigationBar/TopNavigationBar";
 
 export default function MarketplaceLayout({
@@ -6,9 +7,9 @@ export default function MarketplaceLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <ProtectedRoute>
       <TopNavigationBar />
       {children}
-    </>
+    </ProtectedRoute>
   );
 }

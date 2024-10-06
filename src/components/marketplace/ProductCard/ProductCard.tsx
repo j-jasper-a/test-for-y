@@ -22,7 +22,6 @@ const ProductCard = ({ product }: Props) => {
       ? SubCategories[product.subcategory].ja
       : SubCategories[product.subcategory].en;
 
-  // Format the price based on the locale
   const price =
     locale === "ja"
       ? new Intl.NumberFormat("ja-JP", {

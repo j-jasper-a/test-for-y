@@ -1,4 +1,5 @@
 import "./globals.css";
+import Providers from "@/providers/Providers";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
@@ -30,7 +31,7 @@ export default async function RootLayout({
         className={`${fontMain.className} relative bg-background-1 text-white antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <Providers>{children}</Providers>
         </NextIntlClientProvider>
       </body>
     </html>

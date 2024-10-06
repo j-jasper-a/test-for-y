@@ -5,7 +5,7 @@ export type ProductType =
       creator: "Creator name";
       category: "avatars";
       subcategory: "human_like" | "anthro_furry" | "robot_cyborgs" | "others";
-      platforms: Array<
+      platform: Array<
         | "vrchat_quest"
         | "vrchat_pcvr"
         | "spatial"
@@ -25,7 +25,7 @@ export type ProductType =
       creator: "Creator name";
       category: "fashion";
       subcategory: "clothes" | "accessories" | "others";
-      platforms: Array<
+      platform: Array<
         | "vrchat_quest"
         | "vrchat_pcvr"
         | "spatial"
