@@ -4,5 +4,5 @@ import createMiddleware from "next-intl/middleware";
 export default createMiddleware(routing);
 
 export const config = {
-  matcher: ["/", "/(ja|en)/:path*"],
+  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
 };

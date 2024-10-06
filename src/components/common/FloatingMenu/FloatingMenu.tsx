@@ -1,14 +1,15 @@
 import { ReactNode, HTMLAttributes } from "react";
 
 type Props = {
+  className?: string;
   children?: ReactNode;
 } & HTMLAttributes<HTMLDivElement>;
 
-const FloatingMenu = ({ children, ...rest }: Props) => {
+const FloatingMenu = ({ className, children, ...rest }: Props) => {
   return (
     <div
       {...rest}
-      className="absolute right-0 top-10 max-w-96 rounded-xl bg-background-2"
+      className={`${className + " "}absolute bottom-0 right-0 translate-y-[calc(100%+1rem)] rounded-[2rem]`}
     >
       {children}
     </div>

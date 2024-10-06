@@ -7,9 +7,11 @@ export default function MarketplaceLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ProtectedRoute>
+    <>
+      {/* <ProtectedRoute> */}
       <TopNavigationBar />
       {children}
-    </ProtectedRoute>
+      {/* </ProtectedRoute> */}
+    </>
   );
 }

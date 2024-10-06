@@ -1,23 +1,21 @@
 import { ProductType } from "@/schemas/product";
 
 type GetProductsParams = {
-  category?: string;
-  subcategory?: string;
-  platform?: string;
+  category?: ProductType["category"];
+  subcategory?: ProductType["subcategory"];
+  platform?: ProductType["platform"][number];
 };
 
 const getProducts = async (
   params?: GetProductsParams,
 ): Promise<ProductType[]> => {
   try {
-    // Construct the query string based on the provided parameters
     const query = new URLSearchParams();
 
     if (params?.category) query.append("category", params.category);
     if (params?.subcategory) query.append("subcategory", params.subcategory);
     if (params?.platform) query.append("platform", params.platform);
 
-    // Make the request to the API with the query string (if there are params)
     const response = await fetch(`/api/products?${query.toString()}`);
 
     if (!response.ok) {
@@ -27,8 +25,8 @@ const getProducts = async (
     const products = await response.json();
     return products as ProductType[];
   } catch (error) {
-    console.error("Error in getProducts:", error);
-    throw error; // Re-throw the error to be handled by the caller
+    console.error("There was an error: ", error);
+    throw error;
   }
 };
 

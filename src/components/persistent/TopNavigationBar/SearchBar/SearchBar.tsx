@@ -1,10 +1,15 @@
 "use client";
 
+import CategoryMenu from "./CategoryMenu/CategoryMenu";
 import { useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { HiMagnifyingGlass as SearchIcon } from "react-icons/hi2";
 
 const SearchBar = () => {
+  const searchParams = useSearchParams();
+  const currentCategory = searchParams.get("category");
+  const currentSubcategory = searchParams.get("subcategory");
   const t = useTranslations("persistent.topNavigationBar");
   const [activeSidebar, setActiveSidebar] = useState<"left" | "right" | "none">(
     "none",
@@ -41,15 +46,19 @@ const SearchBar = () => {
       {/* Right Side */}
       <div
         onClick={() => setActiveSidebar("right")}
-        className="flex justify-between pl-8"
+        className="relative flex justify-between pl-8"
       >
         <div>
           <p className="text-xs font-bold">{t("labels.category")}</p>
-          <p>{t("placeholders.all")}</p>
+          {/* <p>{t("placeholders.all")}</p> */}
+          <p>
+            {currentSubcategory || currentCategory || t("placeholders.all")}
+          </p>
         </div>
         <button className="rounded-full bg-accent p-2">
           <SearchIcon className="h-6 w-6" />
         </button>
+        <CategoryMenu />
       </div>
       {/* Backgrounds */}
       <div

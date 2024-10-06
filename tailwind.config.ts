@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         text: { white: "#f1f1f1", gray: "#b3b3b3" },
-        background: { 1: "#110606", 2: "#2b2828", 3: "#443e3e" },
+        background: { 1: "#110606", 2: "#2b2828", 3: "#443e3e", 4: "#655d5e" },
         accent: "#ca323d",
       },
       screens: {

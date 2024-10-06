@@ -1,21 +1,23 @@
 "use client";
 
 import FloatingMenu from "@/components/common/FloatingMenu/FloatingMenu";
-import { useLocale } from "next-intl";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { HiOutlineGlobeAlt as GlobeIcon } from "react-icons/hi";
 
 const LocaleButton = () => {
-  const locale = useLocale();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLocaleChange = (newLocale: string) => {
-    const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
-    router.push(newPath);
+    const segments = pathname.split("/");
+    const currentLocale = segments[1];
+    const newPath = `/${newLocale}${pathname.slice(currentLocale.length + 1)}`;
+    const queryString = searchParams.toString();
+    router.replace(`${newPath}${queryString ? `?${queryString}` : ""}`);
   };
 
   return (

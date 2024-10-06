@@ -1,63 +1,72 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ReactNode, KeyboardEvent } from "react";
+import { ReactNode } from "react";
+import { BsShieldLock as LockIcon } from "react-icons/bs";
 
 type ProtectedRouteProps = {
   children: ReactNode;
 };
 
+const PASSWORD = process.env.NEXT_PUBLIC_PASSWORD || "";
+const AUTH_KEY = process.env.NEXT_PUBLIC_AUTH_KEY || "";
+const SESSION_TIMESTAMP_KEY = "sessionTimestamp"; // New key for storing session timestamp
+const SESSION_EXPIRY_DURATION = 3600000; // 1 hour in milliseconds
+
 const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null); // Use null for initial state
   const [passwordInput, setPasswordInput] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const PASSWORD = process.env.PASSWORD; // Your password
-  const AUTH_KEY = "authenticated"; // Key for session storage
-
-  // Check session storage to see if the user is already authenticated
   const checkAuthenticationState = () => {
     try {
-      if (sessionStorage.getItem(AUTH_KEY) === "true") {
+      const authState = sessionStorage.getItem(AUTH_KEY);
+      const timestamp = sessionStorage.getItem(SESSION_TIMESTAMP_KEY);
+      const isSessionExpired =
+        !timestamp ||
+        Date.now() - parseInt(timestamp, 10) > SESSION_EXPIRY_DURATION;
+
+      if (authState === "true" && !isSessionExpired) {
         setIsAuthenticated(true);
+      } else {
+        setIsAuthenticated(false);
       }
     } catch (error) {
-      console.warn("Session storage access failed. Using in-memory only.");
+      console.warn("Session storage access failed: ", error);
+      setIsAuthenticated(false); // Fallback to unauthenticated
     }
   };
 
-  // Save authentication state in session storage
   const saveAuthenticationState = () => {
     try {
       sessionStorage.setItem(AUTH_KEY, "true");
+      sessionStorage.setItem(SESSION_TIMESTAMP_KEY, Date.now().toString()); // Store current time
     } catch (error) {
-      console.warn(
-        "Session storage access failed. Fallback to in-memory only.",
-      );
+      console.warn("Failed to save session storage: ", error);
     }
     setIsAuthenticated(true);
+    setErrorMessage(""); // Clear any previous error message on successful login
   };
 
-  // Clear session storage (logout functionality)
   const clearAuthenticationState = () => {
     try {
       sessionStorage.removeItem(AUTH_KEY);
+      sessionStorage.removeItem(SESSION_TIMESTAMP_KEY); // Remove timestamp on logout
     } catch (error) {
       console.warn("Failed to clear session storage.");
     }
     setIsAuthenticated(false);
   };
 
-  // This effect runs once on mount and checks if the user is already authenticated
   useEffect(() => {
     checkAuthenticationState();
   }, []);
 
-  // Handle password submission
   const handleLogin = () => {
     if (passwordInput === PASSWORD) {
       saveAuthenticationState();
     } else {
-      alert("Incorrect password");
+      setErrorMessage("Incorrect password. Please try again.");
     }
   };
 
@@ -68,26 +77,26 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
     return "evening";
   };
 
-  // Handle Enter key press
-  const handleKeyPress = (event: KeyboardEvent) => {
-    if (event.key === "Enter") {
-      handleLogin();
-    }
-  };
+  // Render nothing until we know the authentication state
+  if (isAuthenticated === null) {
+    return null; // Prevent flickering
+  }
 
   if (!isAuthenticated) {
     return (
       <div className="mx-auto flex h-screen max-w-96 flex-col items-center justify-center bg-background-1 p-4">
         <div className="flex flex-col gap-8 rounded-xl bg-background-2 p-4">
+          <LockIcon size={32} />
           <div className="flex flex-col gap-2">
-            <p className="font-bold">Good {getGreeting()}, Yuta Inakazu!</p>
+            <p className="font-bold">Good {getGreeting()}, Inakazu-sama!</p>
             <p className="text-sm text-text-gray">
               As you instructed, I applied an extremely basic authentication
-              system. Please enter the password you chose to view the website.
+              system. Please enter the password you declared on your Notion page
+              to enter the website.
             </p>
-            <p className="text-xs">
-              Sincerely,
-              <br /> Jihan Jasper Al Rashid
+            <p className="text-xs text-text-gray opacity-50">
+              <span>{`Sincerely, `}</span>
+              <span className="font-bold">{`Jihan Jasper Al Rashid.`}</span>
             </p>
           </div>
           <div className="flex w-full flex-col gap-2">
@@ -95,13 +104,21 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
               type="password"
               placeholder="Enter password"
               value={passwordInput}
-              onChange={(e) => setPasswordInput(e.target.value)}
+              onChange={(e) => {
+                setPasswordInput(e.target.value);
+                setErrorMessage(""); // Clear error message when user types
+              }}
               className="rounded-xl bg-background-3 px-4 py-2 text-sm text-text-white outline-none placeholder:text-text-gray"
             />
+            {errorMessage && (
+              <p className="text-center text-xs text-accent">{errorMessage}</p>
+            )}
             <button
               onClick={handleLogin}
-              className="rounded-xl bg-accent px-4 py-2 text-sm"
-            >{`Enter Website`}</button>
+              className="rounded-xl bg-accent/90 px-4 py-2 text-sm font-medium transition-all hover:bg-accent"
+            >
+              {`Enter Website`}
+            </button>
           </div>
         </div>
       </div>
