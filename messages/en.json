@@ -1,7 +1,18 @@
 {
   "pages": {
-    "home": {
-      "title": "Home"
+    "product": {
+      "titles": {
+        "specifications": "Specifications",
+        "similarProducts": "Similar Products",
+        "supportedPlatforms": "Supported Platforms",
+        "reviews": "Reviews",
+        "bonusCredits": "Avail more discounts from this creator",
+        "faqs": "FAQs"
+      },
+      "buttons": {
+        "buyNow": "Buy Now",
+        "addToCart": "Add to cart"
+      }
     }
   },
   "persistent": {

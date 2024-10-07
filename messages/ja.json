@@ -1,21 +1,36 @@
 {
   "pages": {
-    "home": {
-      "title": "ホーム"
+    "product": {
+      "titles": {
+        "specifications": "仕様",
+        "similarProducts": "類似商品",
+        "supportedPlatforms": "対応プラットフォーム",
+        "reviews": "レビュー",
+        "bonusCredits": "このクリエイターからさらに割引を受けよう",
+        "faqs": "よくある質問"
+      },
+      "buttons": {
+        "buyNow": "今すぐ購入",
+        "addToCart": "カートに追加"
+      }
     }
   },
   "persistent": {
     "topNavigationBar": {
       "labels": {
         "search": "キーワード",
-        "category": "カテゴリー"
+        "category": "カテゴリ"
       },
       "placeholders": {
         "search": "検索",
         "all": "すべて"
       },
       "links": {
-        "listYourCreation": "あなたの作品をリストアップする"
+        "listYourCreation": "あなたの作品を出品する",
+        "signIn": "サインイン",
+        "signUp": "サインアップ",
+        "listYourItem": "アイテムを出品する",
+        "messageToYuta": "Yuta（創設者）へのメッセージ"
       }
     }
   }

@@ -88,7 +88,7 @@ export default function Marketplace() {
     });
   }
   return (
-    <div className="mx-auto flex max-w-screen-lg flex-col gap-6 px-4 py-4 sm:px-10 md:px-20">
+    <div className="mx-auto flex max-w-screen-xl flex-col gap-6 px-4 py-4 sm:px-10 md:px-20">
       {/* Breadcrumbs section */}
       <nav className="text-base font-bold sm:text-[2rem]">
         <ul className="flex">

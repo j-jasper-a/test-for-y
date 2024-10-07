@@ -5,8 +5,8 @@ import SearchBar from "./SearchBar/SearchBar";
 
 const TopNavigationBar = () => {
   return (
-    <div className="sticky left-0 top-0 border-b-[1px] border-background-3 bg-background-1">
-      <div className="mx-auto max-w-screen-lg px-4 py-4 sm:px-10 md:px-20">
+    <div className="sticky left-0 top-0 z-10 border-b-[1px] border-background-3 bg-background-1">
+      <div className="mx-auto max-w-screen-xl px-4 py-4 sm:px-10 md:px-20">
         {/* Phones */}
         <div className="flex w-full items-center justify-between gap-4 sm:hidden">
           <SearchBar />
