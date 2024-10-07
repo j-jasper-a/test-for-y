@@ -12,6 +12,7 @@ const config: Config = {
         text: { white: "#f1f1f1", gray: "#b3b3b3" },
         background: { 1: "#110606", 2: "#2b2828", 3: "#443e3e", 4: "#655d5e" },
         accent: "#ca323d",
+        border: "#515151",
       },
       screens: {
         sm: "768px",

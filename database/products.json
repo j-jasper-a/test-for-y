@@ -7,7 +7,7 @@
     "subcategory": "human_like",
     "platform": ["vrchat_pcvr", "spatial"],
     "price": 20,
-    "ratings": 5
+    "ratings": 4.5
   },
   {
     "id": "2",
@@ -17,7 +17,7 @@
     "subcategory": "robot_cyborgs",
     "platform": ["vrchat_quest", "spatial"],
     "price": 18,
-    "ratings": 5
+    "ratings": 2.8
   },
   {
     "id": "3",
@@ -27,7 +27,7 @@
     "subcategory": "anthro_furry",
     "platform": ["chilloutvr", "vrchat_pcvr"],
     "price": 25,
-    "ratings": 5
+    "ratings": 4.2
   },
   {
     "id": "4",
@@ -37,7 +37,7 @@
     "subcategory": "others",
     "platform": ["virtual_cast", "neos_vr"],
     "price": 15,
-    "ratings": 5
+    "ratings": 3.5
   },
   {
     "id": "5",
@@ -47,7 +47,7 @@
     "subcategory": "human_like",
     "platform": ["vrchat_pcvr", "resonite"],
     "price": 22,
-    "ratings": 5
+    "ratings": 3.8
   },
   {
     "id": "6",
@@ -57,7 +57,7 @@
     "subcategory": "robot_cyborgs",
     "platform": ["vrchat_quest", "chilloutvr"],
     "price": 19,
-    "ratings": 5
+    "ratings": 4.8
   },
   {
     "id": "7",
@@ -67,7 +67,7 @@
     "subcategory": "clothes",
     "platform": ["vrchat_quest", "chilloutvr"],
     "price": 22,
-    "ratings": 5
+    "ratings": 2.2
   },
   {
     "id": "8",
@@ -77,7 +77,7 @@
     "subcategory": "accessories",
     "platform": ["vrchat_pcvr", "resonite"],
     "price": 17,
-    "ratings": 5
+    "ratings": 3.2
   },
   {
     "id": "9",
@@ -87,7 +87,7 @@
     "subcategory": "others",
     "platform": ["vrchat_quest", "virtual_cast"],
     "price": 24,
-    "ratings": 5
+    "ratings": 1.5
   },
   {
     "id": "10",
@@ -97,7 +97,7 @@
     "subcategory": "clothes",
     "platform": ["spatial", "neos_vr"],
     "price": 20,
-    "ratings": 5
+    "ratings": 4.9
   },
   {
     "id": "11",
@@ -107,7 +107,7 @@
     "subcategory": "accessories",
     "platform": ["cluster", "vrchat_pcvr"],
     "price": 23,
-    "ratings": 5
+    "ratings": 3.9
   },
   {
     "id": "12",
@@ -117,7 +117,7 @@
     "subcategory": "others",
     "platform": ["vrchat_pcvr", "neos_vr"],
     "price": 16,
-    "ratings": 5
+    "ratings": 1.8
   },
   {
     "id": "13",
@@ -127,7 +127,7 @@
     "subcategory": "human_like",
     "platform": ["virtual_cast", "spatial"],
     "price": 21,
-    "ratings": 5
+    "ratings": 4.6
   },
   {
     "id": "14",
@@ -137,7 +137,7 @@
     "subcategory": "others",
     "platform": ["vrchat_quest", "resonite"],
     "price": 15,
-    "ratings": 5
+    "ratings": 3.1
   },
   {
     "id": "15",
@@ -147,6 +147,6 @@
     "subcategory": "clothes",
     "platform": ["vrchat_pcvr", "spatial"],
     "price": 19,
-    "ratings": 5
+    "ratings": 4.1
   }
 ]

@@ -2,6 +2,11 @@
 
 import { Categories, ProductType, SubCategories } from "@/schemas/product";
 import { useLocale } from "next-intl";
+import {
+  TbStarFilled as FilledStarIcon,
+  TbStarHalfFilled as HalfStarIcon,
+  TbStar as EmptyStarIcon,
+} from "react-icons/tb";
 
 type Props = {
   product: ProductType;
@@ -45,8 +50,17 @@ const ProductCard = ({ product }: Props) => {
       </div>
       <div>
         <p className="font-bold">{name}</p>
-        <p>{creator}</p>
-        <p>{ratings}</p>
+        <p className="text-text-gray">{creator}</p>
+        <div className="flex items-center gap-1">
+          {[...Array(Math.floor(ratings))].map((_, index) => (
+            <FilledStarIcon key={index} />
+          ))}
+          {ratings % 1 !== 0 && <HalfStarIcon />}
+          {[...Array(5 - Math.ceil(ratings))].map((_, index) => (
+            <EmptyStarIcon key={index} />
+          ))}
+          {ratings.toFixed(1)}
+        </div>
         <p className="font-bold">{price}</p>
       </div>
     </div>

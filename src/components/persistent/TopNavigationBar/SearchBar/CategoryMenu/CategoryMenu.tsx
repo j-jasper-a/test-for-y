@@ -3,7 +3,7 @@
 import FloatingMenu from "@/components/common/FloatingMenu/FloatingMenu";
 import Link from "next/link";
 import { useState } from "react";
-import { HiChevronRight as RightIcon } from "react-icons/hi2";
+import { HiChevronRight as RightIcon } from "react-icons/hi";
 
 const menuItems = [
   {
@@ -60,14 +60,20 @@ export default function CategoryMenu() {
 
   return (
     <FloatingMenu className="bg-background-3 text-text-white shadow-sm shadow-background-2">
-      <div className="grid w-[28rem] grid-cols-[repeat(2,_1fr)]">
+      <div className="grid h-[22rem] w-[28rem] grid-cols-[repeat(2,_1fr)] p-4">
         {/* Left side: Categories */}
-        <ul className="border-collapse p-4">
+        <ul
+          className={`${
+            currentCategory !== "" ? "border-border" : "border-transparent"
+          } border-collapse border-r-[1px] pr-2 transition-all`}
+        >
           {menuItems.map((item) => (
             <li
               key={item.category}
               onMouseEnter={() => setCurrentCategory(item.category)}
-              className={`hover:bg-background-4 flex items-center justify-between rounded-full p-2`}
+              className={`${
+                currentCategory === item.category ? "bg-background-4" : ""
+              } flex items-center justify-between rounded-full p-2 transition-all`}
             >
               <span>{item.category}</span>
               <RightIcon size={16} />
@@ -77,7 +83,7 @@ export default function CategoryMenu() {
           <li onMouseEnter={() => setCurrentCategory("")}>
             <Link
               href="/marketplace"
-              className="hover:bg-background-4 flex items-center justify-between rounded-full p-2"
+              className="flex items-center justify-between rounded-full p-2 hover:bg-background-4"
             >
               All
             </Link>
@@ -85,14 +91,14 @@ export default function CategoryMenu() {
         </ul>
 
         {/* Right side: Subcategories */}
-        <ul className="border-background-4 border-l-[1px] p-4">
+        <ul className="pl-2">
           {selectedCategory && (
             <ul>
               {selectedCategory.subcategory.map((subItem) => (
                 <li key={subItem.name}>
                   <Link
                     href={subItem.url}
-                    className="hover:bg-background-4 flex items-center justify-between rounded-full p-2"
+                    className="flex items-center justify-between rounded-full p-2 transition-all hover:bg-background-4"
                   >
                     {subItem.name}
                   </Link>

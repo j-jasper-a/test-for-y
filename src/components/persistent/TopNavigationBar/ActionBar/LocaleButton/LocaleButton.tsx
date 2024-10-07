@@ -18,6 +18,7 @@ const LocaleButton = () => {
     const newPath = `/${newLocale}${pathname.slice(currentLocale.length + 1)}`;
     const queryString = searchParams.toString();
     router.replace(`${newPath}${queryString ? `?${queryString}` : ""}`);
+    router.refresh();
   };
 
   return (
