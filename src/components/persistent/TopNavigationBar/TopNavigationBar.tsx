@@ -6,13 +6,11 @@ import SearchBar from "./SearchBar/SearchBar";
 const TopNavigationBar = () => {
   return (
     <div className="sticky left-0 top-0 z-10 border-b-[1px] border-background-3 bg-background-1">
-      <div className="mx-auto max-w-screen-xl px-4 py-4 sm:px-10 md:px-20">
-        {/* Phones */}
+      <div className="mx-auto max-w-screen-lg px-4 py-4 sm:px-10 md:px-20">
         <div className="flex w-full items-center justify-between gap-4 sm:hidden">
           <SearchBar />
           <MobileMenuButton />
         </div>
-        {/* Tablets */}
         <div className="hidden flex-col items-center justify-between gap-8 sm:flex md:hidden">
           <div className="flex w-full items-center justify-between">
             <BrandBar />
@@ -20,7 +18,6 @@ const TopNavigationBar = () => {
           </div>
           <SearchBar />
         </div>
-        {/* Desktop/Laptop */}
         <div className="hidden w-full items-center justify-between md:flex">
           <BrandBar />
           <SearchBar />

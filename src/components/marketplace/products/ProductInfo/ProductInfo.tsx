@@ -14,7 +14,6 @@ export default function ProductInfo({ product, locale }: ProductInfoProps) {
 
   return (
     <div className="flex h-full w-full flex-col justify-between gap-4 sm:max-w-[20rem] md:max-w-[24rem]">
-      {/* Header */}
       <div className="flex flex-col">
         <p className="text-accent">{`@${product.creator}`}</p>
         <div className="flex items-center justify-between">
@@ -25,9 +24,7 @@ export default function ProductInfo({ product, locale }: ProductInfoProps) {
           <Ratings ratings={product.ratings} />
         </div>
       </div>
-      {/* Description */}
       <p>{`Introducing your ultimate virtual identity: a fully immersive, customizable VR avatar that mirrors your personality and style!`}</p>
-      {/* Supported Platforms */}
       <div className="flex flex-col gap-1">
         <p className="font-bold">{t("titles.supportedPlatforms")}</p>
         <div className="flex items-center gap-2">
@@ -51,7 +48,6 @@ export default function ProductInfo({ product, locale }: ProductInfoProps) {
           ))}
         </div>
       </div>
-      {/* Price */}
       <div className="mt-8 flex flex-col gap-1">
         <div className="flex items-end gap-2">
           <p className="text-3xl font-bold">
@@ -63,7 +59,6 @@ export default function ProductInfo({ product, locale }: ProductInfoProps) {
         </div>
         <p className="text-xs text-text-gray">{`+ ${t("titles.bonusCredits")}`}</p>
       </div>
-      {/* Actions */}
       <div className="flex flex-col items-center gap-2">
         <button className="w-full rounded-lg border-[1px] border-text-white bg-text-white px-8 py-4 text-base font-medium text-background-1 transition-all hover:border-accent hover:bg-accent hover:text-text-white">
           {t("buttons.buyNow")}

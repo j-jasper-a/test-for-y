@@ -1,4 +1,3 @@
-// api/products.ts
 import { ProductType } from "@/schemas/product";
 
 export async function getProductById(id: string): Promise<ProductType | null> {

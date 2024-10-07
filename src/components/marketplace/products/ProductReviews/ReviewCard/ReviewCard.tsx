@@ -16,7 +16,6 @@ export default function ReviewCard({ review }: ReviewCardProps) {
       <p className="text-text-white">{review.comment}</p>
       <Ratings ratings={review.ratings} />
       <p className="text-text-gray">{review.name}</p>
-      {/* Random device platform */}
     </div>
   );
 }

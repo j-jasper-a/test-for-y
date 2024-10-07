@@ -2,6 +2,7 @@
 
 import Loading from "@/components/common/Loading/Loading";
 import ProductCard from "@/components/marketplace/ProductCard/ProductCard";
+import { useMainContext } from "@/providers/Providers";
 import {
   Categories,
   Platforms,
@@ -15,6 +16,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 export default function Marketplace() {
+  const { searchQuery } = useMainContext();
   const locale = useLocale();
   const searchParams = useSearchParams();
   const currentCategory = searchParams.get(
@@ -45,6 +47,19 @@ export default function Marketplace() {
         platform: currentPlatform || undefined,
       }),
   });
+
+  const filteredProducts = products?.filter((product) =>
+    [
+      product.name,
+      product.creator,
+      product.category,
+      product.subcategory,
+      product.platform,
+    ]
+      .join(" ")
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase().trim().replace(/\s/g, " ")),
+  );
 
   if (isLoading) {
     return <Loading />;
@@ -88,8 +103,7 @@ export default function Marketplace() {
     });
   }
   return (
-    <div className="mx-auto flex max-w-screen-xl flex-col gap-6 px-4 py-4 sm:px-10 md:px-20">
-      {/* Breadcrumbs section */}
+    <div className="relative mx-auto flex max-w-screen-lg flex-col gap-6 px-4 py-4 sm:px-10 md:px-20">
       <nav className="text-base font-bold sm:text-[2rem]">
         <ul className="flex">
           {breadcrumbs.map((breadcrumb, index) => (
@@ -105,10 +119,9 @@ export default function Marketplace() {
         </ul>
       </nav>
 
-      {/* Products grid */}
       <div className="mb-6">
         <div className="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 md:grid-cols-5">
-          {products?.map((product) => (
+          {filteredProducts?.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>

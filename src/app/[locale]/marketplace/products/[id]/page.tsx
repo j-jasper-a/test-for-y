@@ -41,7 +41,7 @@ export default function ProductPage({ params }: PageProps) {
   }
 
   return (
-    <div className="mx-auto flex max-w-screen-xl flex-col gap-4 px-4 py-4 sm:gap-8 sm:px-10 md:px-20">
+    <div className="mx-auto flex max-w-screen-lg flex-col gap-4 px-4 py-4 sm:gap-8 sm:px-10 md:px-20">
       <ProductBreadcrumbs locale={locale} product={product} />
       <div className="flex h-full flex-col justify-between gap-4 sm:flex-row">
         <ProductPreview product={product} />

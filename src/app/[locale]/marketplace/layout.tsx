@@ -1,6 +1,8 @@
 "use client";
 
-import ProtectedRoute from "@/components/common/ProtectedRoute/ProtectedRoute";
+import MobileLanguageMenu from "@/components/persistent/TopNavigationBar/MobileMenuButton/MobileLanguageMenu/MobileLanguageMenu";
+// import ProtectedRoute from "@/components/common/ProtectedRoute/ProtectedRoute";
+import MobileMenu from "@/components/persistent/TopNavigationBar/MobileMenuButton/MobileMenu/MobileMenu";
 import TopNavigationBar from "@/components/persistent/TopNavigationBar/TopNavigationBar";
 import { useMainContext } from "@/providers/Providers";
 
@@ -9,14 +11,18 @@ export default function MarketplaceLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { closeMenus } = useMainContext();
+  const { closeMenus, mobileMenuOpen } = useMainContext();
 
   return (
-    <>
+    <div
+      className={`${mobileMenuOpen ? "h-screen overflow-hidden" : ""} relative`}
+    >
       {/* <ProtectedRoute> */}
       <TopNavigationBar />
       <div onClick={() => closeMenus({})}>{children}</div>
       {/* </ProtectedRoute> */}
-    </>
+      <MobileMenu />
+      <MobileLanguageMenu />
+    </div>
   );
 }

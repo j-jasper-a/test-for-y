@@ -5,12 +5,14 @@ import { useMainContext } from "@/providers/Providers";
 import { Categories, Platforms, SubCategories } from "@/schemas/product";
 import { useLocale, useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
+import { useRef } from "react";
 import {
   HiMagnifyingGlass as SearchIcon,
   HiOutlineAdjustmentsHorizontal as FilterIcon,
 } from "react-icons/hi2";
 
 const SearchBar = () => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const locale = useLocale();
   const searchParams = useSearchParams();
   const {
@@ -19,6 +21,7 @@ const SearchBar = () => {
     activeSearchBarSide,
     setActiveSearchBarSide,
     closeMenus,
+    setSearchQuery,
   } = useMainContext();
   const currentCategory = searchParams.get("category");
   const currentSubcategory = searchParams.get("subcategory");
@@ -52,11 +55,11 @@ const SearchBar = () => {
   return (
     <div className="flex w-full items-center gap-2 md:max-w-[33rem]">
       <div className="relative grid w-full grid-cols-2 rounded-[100px] p-1 text-text-gray">
-        {/* Left Side */}
         <div
           onClick={() => {
             closeMenus({});
             setActiveSearchBarSide("left");
+            inputRef.current?.focus();
           }}
           className={`${
             activeSearchBarSide === "left" || activeSearchBarSide === "right"
@@ -75,15 +78,16 @@ const SearchBar = () => {
               {t("labels.search")}
             </p>
             <input
+              ref={inputRef}
               type="text"
               onFocus={() => setActiveSearchBarSide("left")}
               onBlur={() => setActiveSearchBarSide("none")}
+              onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t("placeholders.search")}
-              className="bg-transparent outline-none"
+              className="w-full bg-transparent pr-8 outline-none"
             />
           </div>
         </div>
-        {/* Right Side */}
         <div
           onClick={() => {
             closeMenus({ except: "category" });
@@ -103,7 +107,6 @@ const SearchBar = () => {
           </button>
           {categoryMenuOpen && <CategoryMenu />}
         </div>
-        {/* Backgrounds */}
         <div
           className={`pointer-events-none absolute left-0 -z-20 h-full w-full rounded-[100px] bg-background-2`}
         />

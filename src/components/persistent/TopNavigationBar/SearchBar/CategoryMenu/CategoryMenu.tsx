@@ -100,7 +100,6 @@ export default function CategoryMenu() {
   return (
     <FloatingMenu className="bg-background-3 text-text-white shadow-sm shadow-background-2">
       <div className="grid h-[22rem] w-[28rem] grid-cols-2 p-4">
-        {/* Left side: Categories */}
         <ul
           className={`${
             currentCategoryId !== "" ? "border-border" : "border-transparent"
@@ -122,7 +121,6 @@ export default function CategoryMenu() {
               </Link>
             </li>
           ))}
-          {/* All category */}
           <li onMouseEnter={() => setCurrentCategoryId("")}>
             <Link
               href="/marketplace"
@@ -133,7 +131,6 @@ export default function CategoryMenu() {
           </li>
         </ul>
 
-        {/* Right side: Subcategories */}
         <ul className="pl-2">
           {selectedCategory ? (
             <ul>
