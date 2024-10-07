@@ -1,5 +1,6 @@
 "use client";
 
+import Loading from "@/components/common/Loading/Loading";
 import ProductCard from "@/components/marketplace/ProductCard/ProductCard";
 import {
   Categories,
@@ -46,7 +47,7 @@ export default function Marketplace() {
   });
 
   if (isLoading) {
-    return <div>Loading products...</div>;
+    return <Loading />;
   }
 
   if (isError) {
