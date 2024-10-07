@@ -15,7 +15,11 @@
         "all": "All"
       },
       "links": {
-        "listYourCreation": "List your creation"
+        "listYourCreation": "List your creation",
+        "signIn": "Sign In",
+        "signUp": "Sign Up",
+        "listYourItem": "List your item",
+        "messageToYuta": "Message to Yuta(The founder)"
       }
     }
   }

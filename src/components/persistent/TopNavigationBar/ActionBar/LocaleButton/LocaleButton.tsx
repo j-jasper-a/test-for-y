@@ -36,7 +36,7 @@ const LocaleButton = () => {
             <li>
               <button
                 onClick={() => handleLocaleChange("en")}
-                className="flex h-7 w-48 items-center gap-2 rounded-lg p-2 hover:bg-background-3"
+                className="flex h-7 w-48 items-center gap-2 rounded-lg p-2 transition-all hover:bg-background-3"
               >
                 <Image
                   src="/assets/flags/US.svg"
@@ -51,7 +51,7 @@ const LocaleButton = () => {
             <li>
               <button
                 onClick={() => handleLocaleChange("ja")}
-                className="flex h-7 w-48 items-center gap-2 rounded-lg p-2 hover:bg-background-3"
+                className="flex h-7 w-48 items-center gap-2 rounded-lg p-2 transition-all hover:bg-background-3"
               >
                 <Image
                   src="/assets/flags/JA.svg"

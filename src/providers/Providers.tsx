@@ -45,7 +45,6 @@ const Providers = ({ children }: ProvidersProps) => {
   }: {
     except?: "category" | "filter" | "user" | "locale";
   }) => {
-    setActiveSearchBarSide("none");
     if (except !== "category") setCategoryMenuOpen(false);
     if (except !== "filter") setFilterMenuOpen(false);
     if (except !== "user") setUserMenuOpen(false);
@@ -57,6 +56,8 @@ const Providers = ({ children }: ProvidersProps) => {
       setUserMenuOpen(false);
       setLocaleMenuOpen(false);
     }
+
+    setActiveSearchBarSide("none");
   };
 
   const value = useMemo(

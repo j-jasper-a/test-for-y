@@ -22,17 +22,17 @@ export default function UserButton() {
       {userMenuOpen && (
         <FloatingMenu className="rounded-xl bg-background-2 text-sm text-text-white shadow-sm shadow-background-1">
           <ul className="flex flex-col gap-1 p-2">
-            <li className="cursor-pointer rounded-xl px-2 py-1 hover:bg-background-3">
+            <li className="cursor-pointer rounded-xl px-2 py-1 transition-all hover:bg-background-3">
               Sign In
             </li>
-            <li className="cursor-pointer rounded-xl px-2 py-1 hover:bg-background-3">
+            <li className="cursor-pointer rounded-xl px-2 py-1 transition-all hover:bg-background-3">
               Sign Up
             </li>
             <hr className="border-border my-2" />
-            <li className="cursor-pointer rounded-xl px-2 py-1 hover:bg-background-3">
+            <li className="cursor-pointer rounded-xl px-2 py-1 transition-all hover:bg-background-3">
               List your item
             </li>
-            <li className="cursor-pointer whitespace-nowrap rounded-xl px-2 py-1 hover:bg-background-3">
+            <li className="cursor-pointer whitespace-nowrap rounded-xl px-2 py-1 transition-all hover:bg-background-3">
               Message to Yuta(The founder)
             </li>
           </ul>

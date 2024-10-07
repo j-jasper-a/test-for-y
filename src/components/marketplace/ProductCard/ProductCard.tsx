@@ -2,6 +2,7 @@
 
 import { Categories, ProductType, SubCategories } from "@/schemas/product";
 import { useLocale } from "next-intl";
+import Link from "next/link";
 import {
   TbStarFilled as FilledStarIcon,
   TbStarHalfFilled as HalfStarIcon,
@@ -10,9 +11,10 @@ import {
 
 type Props = {
   product: ProductType;
+  info?: boolean;
 };
 
-const ProductCard = ({ product }: Props) => {
+const ProductCard = ({ product, info = true }: Props) => {
   const locale = useLocale();
   const EXCHANGE_RATE = 148.75;
 
@@ -41,29 +43,36 @@ const ProductCard = ({ product }: Props) => {
   const ratings = product.ratings;
 
   return (
-    <div className="flex flex-col gap-2 text-sm">
+    <Link
+      href={`/marketplace/products/${product.id}`}
+      className="flex flex-col gap-2 text-sm"
+    >
       <div className="flex aspect-square flex-col items-center justify-center rounded-xl bg-background-3 text-base">
+        {info && (
+          <div>
+            <p>{category}</p>
+            <p>{`>${subcategory}`}</p>
+          </div>
+        )}
+      </div>
+      {info && (
         <div>
-          <p>{category}</p>
-          <p>{`>${subcategory}`}</p>
+          <p className="font-bold">{name}</p>
+          <p className="text-text-gray">{creator}</p>
+          <div className="flex items-center gap-1">
+            {[...Array(Math.floor(ratings))].map((_, index) => (
+              <FilledStarIcon key={index} />
+            ))}
+            {ratings % 1 !== 0 && <HalfStarIcon />}
+            {[...Array(5 - Math.ceil(ratings))].map((_, index) => (
+              <EmptyStarIcon key={index} />
+            ))}
+            {ratings.toFixed(1)}
+          </div>
+          <p className="font-bold">{price}</p>
         </div>
-      </div>
-      <div>
-        <p className="font-bold">{name}</p>
-        <p className="text-text-gray">{creator}</p>
-        <div className="flex items-center gap-1">
-          {[...Array(Math.floor(ratings))].map((_, index) => (
-            <FilledStarIcon key={index} />
-          ))}
-          {ratings % 1 !== 0 && <HalfStarIcon />}
-          {[...Array(5 - Math.ceil(ratings))].map((_, index) => (
-            <EmptyStarIcon key={index} />
-          ))}
-          {ratings.toFixed(1)}
-        </div>
-        <p className="font-bold">{price}</p>
-      </div>
-    </div>
+      )}
+    </Link>
   );
 };
 

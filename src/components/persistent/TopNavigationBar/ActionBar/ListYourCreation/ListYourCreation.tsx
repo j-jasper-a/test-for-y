@@ -8,7 +8,7 @@ const ListYourCreation = () => {
   return (
     <button
       onClick={() => {}}
-      className="text-sm transition-all hover:text-accent"
+      className="whitespace-nowrap text-sm transition-all hover:text-accent"
     >
       {t("listYourCreation")}
     </button>
