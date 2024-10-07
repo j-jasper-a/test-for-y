@@ -17,6 +17,10 @@ type MainContextType = {
   setUserMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   localeMenuOpen: boolean;
   setLocaleMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  activeSearchBarSide: "left" | "right" | "none";
+  setActiveSearchBarSide: React.Dispatch<
+    React.SetStateAction<"left" | "right" | "none">
+  >;
 };
 
 type ProvidersProps = {
@@ -32,12 +36,16 @@ const Providers = ({ children }: ProvidersProps) => {
   const [filterMenuOpen, setFilterMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [localeMenuOpen, setLocaleMenuOpen] = useState(false);
+  const [activeSearchBarSide, setActiveSearchBarSide] = useState<
+    "left" | "right" | "none"
+  >("none");
 
   const closeMenus = ({
     except = undefined,
   }: {
     except?: "category" | "filter" | "user" | "locale";
   }) => {
+    setActiveSearchBarSide("none");
     if (except !== "category") setCategoryMenuOpen(false);
     if (except !== "filter") setFilterMenuOpen(false);
     if (except !== "user") setUserMenuOpen(false);
@@ -62,8 +70,16 @@ const Providers = ({ children }: ProvidersProps) => {
       setUserMenuOpen,
       localeMenuOpen,
       setLocaleMenuOpen,
+      activeSearchBarSide,
+      setActiveSearchBarSide,
     }),
-    [categoryMenuOpen, filterMenuOpen, userMenuOpen, localeMenuOpen],
+    [
+      categoryMenuOpen,
+      filterMenuOpen,
+      userMenuOpen,
+      localeMenuOpen,
+      activeSearchBarSide,
+    ],
   );
 
   return (
