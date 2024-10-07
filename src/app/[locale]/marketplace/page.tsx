@@ -2,6 +2,7 @@
 
 import Loading from "@/components/common/Loading/Loading";
 import ProductCard from "@/components/marketplace/ProductCard/ProductCard";
+import { useMainContext } from "@/providers/Providers";
 import {
   Categories,
   Platforms,
@@ -15,6 +16,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 export default function Marketplace() {
+  const { closeMenus } = useMainContext();
   const locale = useLocale();
   const searchParams = useSearchParams();
   const currentCategory = searchParams.get(
@@ -54,7 +56,6 @@ export default function Marketplace() {
     return <div>Failed to load products</div>;
   }
 
-  // Dynamically build breadcrumbs based on URL parameters
   const breadcrumbs = [{ name: "All", href: "/marketplace" }];
 
   if (currentCategory) {

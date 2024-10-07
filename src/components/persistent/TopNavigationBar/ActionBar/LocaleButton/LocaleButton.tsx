@@ -1,16 +1,16 @@
 "use client";
 
 import FloatingMenu from "@/components/common/FloatingMenu/FloatingMenu";
+import { useMainContext } from "@/providers/Providers";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
 import { HiOutlineGlobeAlt as GlobeIcon } from "react-icons/hi";
 
 const LocaleButton = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const { localeMenuOpen, setLocaleMenuOpen, closeMenus } = useMainContext();
 
   const handleLocaleChange = (newLocale: string) => {
     const segments = pathname.split("/");
@@ -22,10 +22,16 @@ const LocaleButton = () => {
   };
 
   return (
-    <button onClick={() => setMenuOpen((prev) => !prev)} className="relative">
-      <GlobeIcon size={16} />
-      {menuOpen && (
-        <FloatingMenu>
+    <button
+      onClick={() => {
+        closeMenus({ except: "locale" });
+        setLocaleMenuOpen((prev) => !prev);
+      }}
+      className="relative"
+    >
+      <GlobeIcon className="h-5 w-5 transition-all hover:text-accent" />
+      {localeMenuOpen && (
+        <FloatingMenu className="rounded-xl bg-background-2 text-text-white shadow-sm shadow-background-1">
           <ul className="p-2 text-xs font-medium">
             <li>
               <button

@@ -10,11 +10,11 @@ type ProtectedRouteProps = {
 
 const PASSWORD = process.env.NEXT_PUBLIC_PASSWORD || "";
 const AUTH_KEY = process.env.NEXT_PUBLIC_AUTH_KEY || "";
-const SESSION_TIMESTAMP_KEY = "sessionTimestamp"; // New key for storing session timestamp
-const SESSION_EXPIRY_DURATION = 3600000; // 1 hour in milliseconds
+const SESSION_TIMESTAMP_KEY = "sessionTimestamp";
+const SESSION_EXPIRY_DURATION = 3600000;
 
 const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null); // Use null for initial state
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [passwordInput, setPasswordInput] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -33,25 +33,25 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
       }
     } catch (error) {
       console.warn("Session storage access failed: ", error);
-      setIsAuthenticated(false); // Fallback to unauthenticated
+      setIsAuthenticated(false);
     }
   };
 
   const saveAuthenticationState = () => {
     try {
       sessionStorage.setItem(AUTH_KEY, "true");
-      sessionStorage.setItem(SESSION_TIMESTAMP_KEY, Date.now().toString()); // Store current time
+      sessionStorage.setItem(SESSION_TIMESTAMP_KEY, Date.now().toString());
     } catch (error) {
       console.warn("Failed to save session storage: ", error);
     }
     setIsAuthenticated(true);
-    setErrorMessage(""); // Clear any previous error message on successful login
+    setErrorMessage("");
   };
 
   const clearAuthenticationState = () => {
     try {
       sessionStorage.removeItem(AUTH_KEY);
-      sessionStorage.removeItem(SESSION_TIMESTAMP_KEY); // Remove timestamp on logout
+      sessionStorage.removeItem(SESSION_TIMESTAMP_KEY);
     } catch (error) {
       console.warn("Failed to clear session storage.");
     }
@@ -77,9 +77,8 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
     return "evening";
   };
 
-  // Render nothing until we know the authentication state
   if (isAuthenticated === null) {
-    return null; // Prevent flickering
+    return null;
   }
 
   if (!isAuthenticated) {
@@ -106,7 +105,7 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
               value={passwordInput}
               onChange={(e) => {
                 setPasswordInput(e.target.value);
-                setErrorMessage(""); // Clear error message when user types
+                setErrorMessage("");
               }}
               className="rounded-xl bg-background-3 px-4 py-2 text-sm text-text-white outline-none placeholder:text-text-gray"
             />

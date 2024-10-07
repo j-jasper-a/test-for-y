@@ -1,6 +1,7 @@
 "use client";
 
 import CategoryMenu from "./CategoryMenu/CategoryMenu";
+import { useMainContext } from "@/providers/Providers";
 import { Categories, Platforms, SubCategories } from "@/schemas/product";
 import { useLocale, useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
@@ -10,7 +11,8 @@ import { HiMagnifyingGlass as SearchIcon } from "react-icons/hi2";
 const SearchBar = () => {
   const locale = useLocale();
   const searchParams = useSearchParams();
-  const [categoryMenuOpen, setCategoryMenuOpen] = useState(false);
+  const { categoryMenuOpen, setCategoryMenuOpen, closeMenus } =
+    useMainContext();
   const currentCategory = searchParams.get("category");
   const currentSubcategory = searchParams.get("subcategory");
   const currentPlatform = searchParams.get("platform");
@@ -25,7 +27,6 @@ const SearchBar = () => {
     none = "opacity-0",
   }
 
-  // Helper function to get the display name based on locale
   const getDisplayName = (): string => {
     if (locale === "ja") {
       return (
@@ -75,6 +76,7 @@ const SearchBar = () => {
       {/* Right Side */}
       <div
         onClick={() => {
+          closeMenus({ except: "category" });
           setActiveSidebar("right");
           setCategoryMenuOpen((prev) => !prev);
         }}
@@ -82,11 +84,10 @@ const SearchBar = () => {
       >
         <div>
           <p className="text-xs font-bold">{t("labels.category")}</p>
-          {/* Display the category/platform/subcategory name */}
           <p>{getDisplayName()}</p>
         </div>
         <button className="rounded-full bg-accent p-2">
-          <SearchIcon className="h-6 w-6" />
+          <SearchIcon className="h-6 w-6 text-text-white" />
         </button>
         {categoryMenuOpen && <CategoryMenu />}
       </div>

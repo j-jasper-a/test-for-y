@@ -53,7 +53,6 @@ const menuItems = [
 export default function CategoryMenu() {
   const [currentCategory, setCurrentCategory] = useState<string>("");
 
-  // Find the subcategory of the currently selected category
   const selectedCategory = menuItems.find(
     (item) => item.category === currentCategory,
   );

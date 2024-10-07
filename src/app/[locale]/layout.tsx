@@ -1,5 +1,5 @@
 import "./globals.css";
-import Providers from "@/providers/Providers";
+import { Providers } from "@/providers/Providers";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
