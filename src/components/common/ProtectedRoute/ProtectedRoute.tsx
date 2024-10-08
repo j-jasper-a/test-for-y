@@ -53,7 +53,7 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
       sessionStorage.removeItem(AUTH_KEY);
       sessionStorage.removeItem(SESSION_TIMESTAMP_KEY);
     } catch (error) {
-      console.warn("Failed to clear session storage.");
+      console.warn("Failed to clear session storage: " + error);
     }
     setIsAuthenticated(false);
   };
@@ -127,7 +127,12 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   return (
     <div>
       {children}
-      <button onClick={clearAuthenticationState}>Logout</button>
+      <button
+        onClick={clearAuthenticationState}
+        className="w-full text-center text-xs text-text-gray opacity-50"
+      >
+        Logout
+      </button>
     </div>
   );
 };

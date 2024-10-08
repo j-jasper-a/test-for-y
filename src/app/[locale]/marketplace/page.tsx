@@ -19,6 +19,7 @@ export default function Marketplace() {
   const { searchQuery } = useMainContext();
   const locale = useLocale();
   const searchParams = useSearchParams();
+
   const currentCategory = searchParams.get(
     "category",
   ) as ProductType["category"];
@@ -28,6 +29,12 @@ export default function Marketplace() {
   const currentPlatform = searchParams.get(
     "platform",
   ) as ProductType["platform"][number];
+  const minPrice = searchParams.get("minPrice")
+    ? Number(searchParams.get("minPrice"))
+    : undefined;
+  const maxPrice = searchParams.get("maxPrice")
+    ? Number(searchParams.get("maxPrice"))
+    : undefined;
 
   const {
     data: products,
@@ -48,8 +55,8 @@ export default function Marketplace() {
       }),
   });
 
-  const filteredProducts = products?.filter((product) =>
-    [
+  const filteredProducts = products?.filter((product) => {
+    const matchesSearchQuery = [
       product.name,
       product.creator,
       product.category,
@@ -58,11 +65,25 @@ export default function Marketplace() {
     ]
       .join(" ")
       .toLowerCase()
-      .includes(searchQuery.toLowerCase().trim().replace(/\s/g, " ")),
-  );
+      .includes(searchQuery.toLowerCase().trim().replace(/\s/g, " "));
+
+    const withinPriceRange =
+      (!minPrice || product.price >= minPrice) &&
+      (!maxPrice || product.price <= maxPrice);
+
+    return matchesSearchQuery && withinPriceRange;
+  });
 
   if (isLoading) {
     return <Loading />;
+  }
+
+  if (filteredProducts?.length === 0) {
+    return (
+      <div className="flex h-[75vh] w-full items-center justify-center">
+        <div className="font-bold text-text-gray">Nothing here.</div>
+      </div>
+    );
   }
 
   if (isError) {
@@ -102,8 +123,9 @@ export default function Marketplace() {
       href: `/marketplace?category=${currentCategory}&subcategory=${currentSubcategory}&platform=${currentPlatform}`,
     });
   }
+
   return (
-    <div className="relative mx-auto flex max-w-screen-lg flex-col gap-6 px-4 py-4 sm:px-10 md:px-20">
+    <div className="relative mx-auto flex max-w-screen-lg flex-col gap-6 px-4 py-4 sm:px-10 sm:py-7 md:px-20">
       <nav className="text-base font-bold sm:text-[2rem]">
         <ul className="flex">
           {breadcrumbs.map((breadcrumb, index) => (
@@ -112,7 +134,7 @@ export default function Marketplace() {
                 {breadcrumb.name}
               </Link>
               {index < breadcrumbs.length - 1 && (
-                <span className="px-2 opacity-50">{`>`}</span>
+                <span className="px-2 font-normal">{`>`}</span>
               )}
             </li>
           ))}

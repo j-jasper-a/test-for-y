@@ -1,5 +1,3 @@
-"use client";
-
 import FloatingMenu from "@/components/common/FloatingMenu/FloatingMenu";
 import { Categories, SubCategories } from "@/schemas/product";
 import { useLocale } from "next-intl";
@@ -89,65 +87,84 @@ const menuItems: Category[] = [
   },
 ];
 
-export default function CategoryMenu() {
-  const locale: Locale = useLocale() as Locale;
-  const [currentCategoryId, setCurrentCategoryId] = useState<string>("");
+export default function MobileCategoryMenu() {
+  const locale = useLocale() as Locale;
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
 
-  const selectedCategory: Category | undefined = menuItems.find(
-    (item) => item.id === currentCategoryId,
-  );
+  const handleSelectCategory = ({
+    e,
+    categoryId,
+  }: {
+    e: React.MouseEvent;
+    categoryId: string;
+  }) => {
+    e.stopPropagation();
+    setSelectedCategory(categoryId);
+  };
 
   return (
-    <FloatingMenu className="hidden bg-background-3 text-text-white shadow-sm shadow-background-2 sm:block">
-      <div className="grid h-[22rem] w-[28rem] grid-cols-2 p-4">
-        <ul
-          className={`${
-            currentCategoryId !== "" ? "border-border" : "border-transparent"
-          } border-collapse border-r-[1px] pr-2 transition-all`}
-        >
-          {menuItems.map((item) => (
-            <li
-              key={item.id}
-              onMouseEnter={() => setCurrentCategoryId(item.id)}
-            >
-              <Link
-                href={item.url}
-                className={`${
-                  currentCategoryId === item.id ? "bg-background-4" : ""
-                } flex items-center justify-between rounded-full p-2 transition-all`}
+    <FloatingMenu
+      className={`${selectedCategory !== "" ? "w-64" : "w-56"} block bg-background-3 p-4 text-text-white shadow-sm shadow-background-2 transition-all sm:hidden`}
+    >
+      <ul>
+        {selectedCategory === "" &&
+          menuItems.map((category) => (
+            <li key={category.id}>
+              <button
+                onClick={(e) =>
+                  handleSelectCategory({ e: e, categoryId: category.id })
+                }
+                className="flex w-full cursor-pointer items-center justify-between rounded-full p-2 transition-all hover:bg-background-4"
               >
-                <span>{item.name[locale]}</span>
+                <span>{category.name[locale]}</span>
                 <RightIcon size={16} />
-              </Link>
+              </button>
             </li>
           ))}
-          <li onMouseEnter={() => setCurrentCategoryId("")}>
+        {selectedCategory !== "" && (
+          <li>
+            <button
+              onClick={(e) => handleSelectCategory({ e: e, categoryId: "" })}
+              className="flex w-full cursor-pointer items-center justify-between rounded-full bg-background-4 p-2 transition-all"
+            >
+              <span>
+                {locale === "ja"
+                  ? Categories[selectedCategory].ja
+                  : Categories[selectedCategory].en}
+              </span>
+              <RightIcon size={16} />
+            </button>
+          </li>
+        )}
+        {selectedCategory === "" && (
+          <li>
             <Link
               href="/marketplace"
-              className="flex items-center justify-between rounded-full p-2 hover:bg-background-4"
+              className="flex items-center justify-between rounded-full p-2 transition-all hover:bg-background-4"
             >
               <span>{locale === "ja" ? "すべて" : "All"}</span>
             </Link>
           </li>
-        </ul>
-
-        <ul className="pl-2">
-          {selectedCategory ? (
-            <ul>
-              {selectedCategory.subcategories.map((subItem) => (
-                <li key={subItem.id}>
+        )}
+      </ul>
+      {selectedCategory !== "" && <hr className="mt-2 border-border" />}
+      {selectedCategory !== "" && (
+        <ul className="ml-6 mt-2">
+          {selectedCategory !== "" &&
+            menuItems
+              .find((category) => category.id === selectedCategory)
+              ?.subcategories.map((subcategory) => (
+                <li key={subcategory.id}>
                   <Link
-                    href={subItem.url}
+                    href={subcategory.url}
                     className="flex items-center justify-between rounded-full p-2 transition-all hover:bg-background-4"
                   >
-                    <span>{subItem.name[locale]}</span>
+                    <span>{subcategory.name[locale]}</span>
                   </Link>
                 </li>
               ))}
-            </ul>
-          ) : null}
         </ul>
-      </div>
+      )}
     </FloatingMenu>
   );
 }

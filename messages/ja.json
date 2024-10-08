@@ -19,7 +19,16 @@
     "topNavigationBar": {
       "labels": {
         "search": "キーワード",
-        "category": "カテゴリ"
+        "category": "カテゴリ",
+        "shopping": "ショッピング",
+        "language": "言語",
+        "support": "サポート",
+        "yourAccount": "アカウント",
+        "priceRange": "価格帯",
+        "platforms": "プラットフォーム",
+        "minimum": "最小",
+        "filters": "フィルタ",
+        "maximum": "最大"
       },
       "placeholders": {
         "search": "検索",
@@ -30,8 +39,21 @@
         "signIn": "サインイン",
         "signUp": "サインアップ",
         "listYourItem": "アイテムを出品する",
-        "messageToYuta": "Yuta（創設者）へのメッセージ"
+        "messageToYuta": "Yuta（創設者）へのメッセージ",
+        "shoppingCart": "ショッピングカート"
+      },
+      "buttons": {
+        "clearAll": "すべてクリア",
+        "apply": "適用"
+      },
+      "messages": {
+        "hello": "こんにちは"
       }
+    }
+  },
+  "global": {
+    "buttons": {
+      "goBack": "戻る"
     }
   }
 }

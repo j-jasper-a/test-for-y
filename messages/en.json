@@ -19,7 +19,16 @@
     "topNavigationBar": {
       "labels": {
         "search": "Keyword",
-        "category": "Category"
+        "category": "Category",
+        "shopping": "Shopping",
+        "language": "Language",
+        "support": "Support",
+        "yourAccount": "Your account",
+        "priceRange": "Price Range",
+        "platforms": "Platforms",
+        "filters": "Filters",
+        "minimum": "Minimum",
+        "maximum": "Maximum"
       },
       "placeholders": {
         "search": "Search",
@@ -30,8 +39,21 @@
         "signIn": "Sign In",
         "signUp": "Sign Up",
         "listYourItem": "List your item",
-        "messageToYuta": "Message to Yuta(The founder)"
+        "messageToYuta": "Message to Yuta(The founder)",
+        "shoppingCart": "Shopping Cart"
+      },
+      "buttons": {
+        "clearAll": "Clear all",
+        "apply": "Apply"
+      },
+      "messages": {
+        "hello": "Hello"
       }
+    }
+  },
+  "global": {
+    "buttons": {
+      "goBack": "Go back"
     }
   }
 }

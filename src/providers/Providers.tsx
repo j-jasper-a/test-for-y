@@ -27,6 +27,8 @@ type MainContextType = {
   setMobileLanguageMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   searchQuery: string;
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+  mobileCategoryMenuOpen: boolean;
+  setMobileCategoryMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 type ProvidersProps = {
@@ -48,6 +50,7 @@ const Providers = ({ children }: ProvidersProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileLanguageMenuOpen, setMobileLanguageMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [mobileCategoryMenuOpen, setMobileCategoryMenuOpen] = useState(false);
 
   const closeMenus = ({
     except = undefined,
@@ -88,6 +91,8 @@ const Providers = ({ children }: ProvidersProps) => {
       setMobileLanguageMenuOpen,
       searchQuery,
       setSearchQuery,
+      mobileCategoryMenuOpen,
+      setMobileCategoryMenuOpen,
     }),
     [
       categoryMenuOpen,
@@ -98,6 +103,7 @@ const Providers = ({ children }: ProvidersProps) => {
       mobileMenuOpen,
       mobileLanguageMenuOpen,
       searchQuery,
+      mobileCategoryMenuOpen,
     ],
   );
 

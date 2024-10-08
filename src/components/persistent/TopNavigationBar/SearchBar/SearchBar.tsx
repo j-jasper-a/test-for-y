@@ -1,15 +1,14 @@
 "use client";
 
 import CategoryMenu from "./CategoryMenu/CategoryMenu";
+import FilterButton from "./FilterButton/FilterButton";
+import MobileCategoryMenu from "./MobileCategoryMenu/MobileCategoryMenu";
 import { useMainContext } from "@/providers/Providers";
 import { Categories, Platforms, SubCategories } from "@/schemas/product";
 import { useLocale, useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { useRef } from "react";
-import {
-  HiMagnifyingGlass as SearchIcon,
-  HiOutlineAdjustmentsHorizontal as FilterIcon,
-} from "react-icons/hi2";
+import { HiMagnifyingGlass as SearchIcon } from "react-icons/hi2";
 
 const SearchBar = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -22,6 +21,8 @@ const SearchBar = () => {
     setActiveSearchBarSide,
     closeMenus,
     setSearchQuery,
+    mobileCategoryMenuOpen,
+    setMobileCategoryMenuOpen,
   } = useMainContext();
   const currentCategory = searchParams.get("category");
   const currentSubcategory = searchParams.get("subcategory");
@@ -92,20 +93,24 @@ const SearchBar = () => {
           onClick={() => {
             closeMenus({ except: "category" });
             setCategoryMenuOpen((prev) => !prev);
+            setMobileCategoryMenuOpen((prev) => !prev);
             setActiveSearchBarSide(
               activeSearchBarSide === "right" ? "none" : "right",
             );
           }}
           className="relative flex justify-between pl-8"
         >
-          <div>
+          <div className="overflow-hidden">
             <p className="text-xs font-bold">{t("labels.category")}</p>
-            <p>{getDisplayName()}</p>
+            <p className="overflow-hidden overflow-ellipsis whitespace-nowrap">
+              {getDisplayName()}
+            </p>
           </div>
           <button className="rounded-full bg-accent p-2">
             <SearchIcon className="h-6 w-6 text-text-white" />
           </button>
           {categoryMenuOpen && <CategoryMenu />}
+          {mobileCategoryMenuOpen && <MobileCategoryMenu />}
         </div>
         <div
           className={`pointer-events-none absolute left-0 -z-20 h-full w-full rounded-[100px] bg-background-2`}
@@ -114,11 +119,7 @@ const SearchBar = () => {
           className={`${ActiveSidebar[activeSearchBarSide]} pointer-events-none absolute -z-10 h-full w-1/2 rounded-[100px] bg-background-3 transition-all`}
         />
       </div>
-      <div className="hidden sm:block">
-        <button className="rounded-full border-[1px] border-text-white p-2 text-text-white transition-all hover:border-accent hover:text-accent">
-          <FilterIcon className="h-6 w-6" />
-        </button>
-      </div>
+      <FilterButton />
     </div>
   );
 };
