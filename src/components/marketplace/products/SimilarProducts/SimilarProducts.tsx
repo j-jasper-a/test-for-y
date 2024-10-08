@@ -16,7 +16,7 @@ export default function SimilarProducts({ products }: SimilarProductsProps) {
   return (
     <div className="flex flex-col gap-4">
       <p className="text-3xl font-bold">{t("titles.similarProducts")}</p>
-      <div className="flex w-full justify-between gap-4 overflow-scroll sm:overflow-auto">
+      <div className="no-scrollbar flex w-full justify-between gap-4 overflow-scroll sm:overflow-auto">
         {products?.slice(0, 5).map((product) => (
           <div key={product.id} className="w-full">
             <ProductCard product={product} />
